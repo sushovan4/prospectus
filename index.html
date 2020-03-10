@@ -38,25 +38,29 @@
 
 	<section id="talk">
 	  <h3><u>The Manifesto</u></h3>
-	  <ul class="timeline" style="font-size:0.7em">
+	  <ul class="timeline" style="font-size:0.6em">
 	    <li class="fragment">
-	      Introduction to Shape Reconstruction
+	      <green>Introduction to Shape Reconstruction</green>
 	    </li>
 	    
 	    <li class="fragment">
-	      &#268;ech and Vietoris-Rips Complexes
+	      <green>Vietoris-Rips and &#268;ech Complexes</green>
 	    </li>
 
 	    <li class="fragment">
-	      Shape Comparison
+	      <green>Shape Reconstruction Library</green>
 	    </li>
 	    
 	    <li class="fragment">
-	      Hausdorff and Gromov-Hausdorff Distance
+	      <red>Introduction to Shape Comparison</red>
+	    </li>
+	    
+	    <li class="fragment">
+	      <red>Hausdorff and Gromov-Hausdorff Distance</red>
 	    </li>
 
 	    <li class="fragment">
-	      Approximating the Gromov-Hausdorff Distance
+	      <red>Approximating the Gromov-Hausdorff Distance</red>
 	    </li>
 	  </ul>
 	</section>
@@ -121,7 +125,7 @@
 	    <img width="300" style="border:none;background:none"
 		 src="https://raw.githubusercontent.com/sushovan4/recon-presentation/master/circles.png" />
 	    <br>
-	    Strafitied-manifolds (the bad ones)
+	    Stratified-manifolds (the bad ones)
 	  </section>
 	  <section id="map">
 	    <iframe width="100%" height="400" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=tulane%20university&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
@@ -138,8 +142,7 @@
 	    <ul class="timeline" style="font-size: 0.6em">
 	      <li class="fragment">$X$ is an <red>unknown</red> (compact) subset of $\mathbb{R}^N$.</li>
 	      <li class="fragment">We have a sample or
-		a <span class="green">point-cloud</span> $S$ represented as a
-		metric space$(S,\|\cdot\|)$.
+		a <span class="green">point-cloud</span>  $(S,\|\cdot\|)$.
 	      </li>
 	      <li class="fragment">$S$ is expected to be "dense" in $X$.</li>
 	    </ul>
@@ -173,15 +176,19 @@
 	<section id="reconstruction">
 	  <h3><u>Data <span class="green">⟶</span> Shape</u></h3>
 	  <h6>Vietoris-Rips at scale $\epsilon>0$</h6>
-	  <img width="200" style="margin:50px;border:none;background:none" src="data.png" />
+	  <img width="100" style="margin:50px;border:none;background:none" src="data.png" />
 	  
 	  <span class="green">⟶</span>
-	  
-	  <img width="200" style="margin:50px;border:none;background:none" src="rips.png" />
-	  <definition data-header="Vietoris-Rips Complex">
-	    In a metric space $(M,d)$, each subset $A$ size $k$ with
-	    $diam_d(A)<\epsilon$ is a $(k-1)$-simplex.
-	  </definition>
+	    <img width="100" style="margin:50px;border:none;background:none" src="rips.png" />
+	    <br>  <br>
+	  <div class="fragment">
+	    <div class="divider">💡</div><br>
+	    
+	    <definition data-header="Vietoris-Rips Complex">
+	      In a metric space $(M,d)$, each subset $A$ size $k$ with
+	      $diam_d(A)<\epsilon$ is a $(k-1)$-simplex.
+				   </definition>
+	</div>
 	</section>
 	
 	<section id="manifold-recon">
@@ -195,7 +202,7 @@
 	<section data-background-iframe="https://smajhi.com/shape-reconstruction"></section>
 
 	<section id="graph-recon">
-	  <h3><u>Graph Reconstruction</u></h3>
+	  <h3><u>Geodesic Spaces</u></h3>
 	  small $\epsilon$ + dense sample trick
 	  <br><span class="red">does not work</span><br>
 	  &#128546;
@@ -206,10 +213,10 @@
 	  <h3><u>Our Approach</u></h3>
 	  <section>
 	    <ul class="timeline" style="font-size: 0.8em">
-	      <li class="fragment">$X$ is a <green>geodesic</green> space $(X,d_L)$.</li>
+	      <li class="fragment">$X\subseteq\mathbb{R}^N$ is a <green>geodesic</green> subspace $(X,d_L)$.</li>
 	      <li class="fragment"><green>Distortion</green>
 		$\delta=\sup_{x\neq y}\frac{d_L(x,y)}{\|x-y\|}$ is finite.</li>
-	      <li class="fragment"><green>Convexity radius ($\rho$)</green> is positive.</li>
+	      <li class="fragment"><green>Convexity radius</green> $\rho$ is positive.</li>
 	      
 	      <li class="fragment">$d_H(X,S)$ is small.</li>
 	    </ul>
@@ -235,6 +242,15 @@
 	    <li class="fragment">Language: <span class="green">JavaScript</span></li>
 	    <li class="fragment">Platform: (modern) Web Browsers</li>
 	    <li class="fragment">Hosted on <span class="green">Github</span></li>
+	  </ul>
+	</section>
+
+ 	<section>
+	  <h3><u>Directions</u></h3>
+	  <ul class="timeline">
+	    <li class="fragment">Homotopy-equivalent reconstruction of higher-dimensional geodesic spaces?</li>
+	    <li class="fragment">Geometric reconstruction of higher-dimensional geodesic spaces?</span></li>
+	    <li class="fragment">Can the library support custom user-input?</li>
 	  </ul>
 	</section>
 	
@@ -484,27 +500,6 @@
 	      $d_{H,iso}(X,Y)$ takes $O(k\log{k})$ time.
 	    </block>
 	  </section>
-
-	  <section>
-	    Sometimes, computing the exact <green>optimal solution</green> ($s_{opt}$) to an
-	    <green>optimization problem</green> is
-	    <red style="font-size: 1.3em">HARD</red>.
-
-	    <br><br>
-	    <div  class="fragment fade-in">
-	      <div class="divider">💡</div><br>
-	      Computing an <green>approximate solution</green> ($s_{appx}$) is sometimes
-	      more <green>efficient</green>. 
-	    </div>
-	  </section>
-
-	  <section>
-	    <definition data-header="Approximation Algorithm">
-	      For $\rho>1$, if we have $$s_{opt}\leq s_{appx}\leq\rho s_{opt},$$
-	      then the algorithm is called an approximation algorithm with an
-	      approximation factor  <green>$\rho$</green> .
-	    </definition>
-	  </section>
 	  
 	  <section>
 	    <block data-header="">
@@ -521,7 +516,16 @@
 	</section>
 	
 	<section data-background-iframe="https://arxiv.org/pdf/1912.13008.pdf"></section> 
-	
+
+	<section>
+	  <h3><u>Directions</u></h3>
+	  <ul class="timeline">
+	    <li class="fragment">How to approximate $d_{GH}$ in higher dimensions?</li>
+	    <li class="fragment">What is the least dimension where it is NP-hard?</span></li>
+	    <li class="fragment">Is it NP-hard in $\mathbb{R}^N$?</li>
+	  </ul>
+	</section>
+
 	<section id="thanks">
 	  The speaker will now accept<br>
 	  <span class="red" style="font-size:2em">QUESTIONS</span>.
