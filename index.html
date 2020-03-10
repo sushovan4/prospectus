@@ -1,4 +1,4 @@
-<!-- Run: node plugins/nodes-server -->
+<!-- Run: node plugins/notes-server -->
 <!doctype html>
 <html>
   <head>
@@ -28,39 +28,35 @@
 	  <span style="font-size:0.7em">Tulane University (March 10, 2020)</span>
 	  <br>
 	  
-	  <img width="200"
-	       src="https://raw.githubusercontent.com/sushovan4/prospectus/master/frame.png"/>
+	  <img
+	    width="200" src="https://raw.githubusercontent.com/sushovan4/prospectus/master/frame.png"/>
 	  <br>
 	  Scan the above QR or hit the following url:
 	  <span class="green">smajhi.com/prospectus</span>
 	</section>
 	<!-- Title ends -->
 
-	<section id="myself" data-background-iframe="https://smajhi.com/"></section>
-	
 	<section id="talk">
 	  <h3><u>The Manifesto</u></h3>
 	  <ul class="timeline" style="font-size:0.7em">
 	    <li class="fragment">
-	      Introduction to Shape Comparison
+	      Introduction to Shape Reconstruction
 	    </li>
 	    
 	    <li class="fragment">
-	      Hausdorff Distance
+	      &#268;ech and Vietoris-Rips Complexes
 	    </li>
 
 	    <li class="fragment">
-	      Gromov-Hausdorff Distance
+	      Shape Comparison
+	    </li>
+	    
+	    <li class="fragment">
+	      Hausdorff and Gromov-Hausdorff Distance
 	    </li>
 
 	    <li class="fragment">
-	      Computing the Gromov-Hausdorff Distance
-	    </li>
-	  
-	    <li class="fragment">
-	      <green>Questions</green>, <green>Discussions</green>, and 
-	      &#127829; <red>Pizza</red>.
-	      
+	      Approximating the Gromov-Hausdorff Distance
 	    </li>
 	  </ul>
 	</section>
@@ -104,6 +100,7 @@
 	<!-- People ends -->
 	
 	<!-- Shape -->
+	<section><h3>1. Reconstruction</h3></section>
 	<section id="shape">
 	  <h3><u>Shapes</u></h3>
 	  <aside class="notes">
@@ -111,12 +108,9 @@
 
 	    The best class of shapes one always hopes to deal with is manifolds.  
 
-	    Then comes the impious brethren thereof - non-manifold.
 	  </aside>
 	  <section id="manifold">
- 	    <img width="300" style="border:none;background:none"
-		 src="https://raw.githubusercontent.com/sushovan4/recon-presentation/master/path.png"/>
-	    <img width="200" style="border:none;background:none"
+ 	    <img width="200" style="border:none;background:none"
 		 src="https://raw.githubusercontent.com/sushovan4/recon-presentation/master/circle.png" />
 	    <img width="300" style="border:none;background:none"
 		 src="https://raw.githubusercontent.com/sushovan4/recon-presentation/master/torus.png" />
@@ -126,10 +120,8 @@
 	  <section id="non-manifold">
 	    <img width="300" style="border:none;background:none"
 		 src="https://raw.githubusercontent.com/sushovan4/recon-presentation/master/circles.png" />
-	    <img width="200" style="border:none;background:none"
-		 src="https://raw.githubusercontent.com/sushovan4/recon-presentation/master/graph.png" />
 	    <br>
-	    Non-manifolds (the bad ones)
+	    Strafitied-manifolds (the bad ones)
 	  </section>
 	  <section id="map">
 	    <iframe width="100%" height="400" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=tulane%20university&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
@@ -141,18 +133,25 @@
 	<!-- Shape ends -->
 	
 	<section>
-	  <h3><u>Problem Statement</u></h3> We aim to reconstruct
-	  an <span class="red">unknown</span> shape $X$.
-	  <br>
-	  <ul class="timeline" style="font-size: 0.6em">
-	    <li class="fragment">$X$ is a (compact) non-manifold</li>
-	    <li class="fragment">$X$ is a geodesic space</li>
-	    <li class="fragment">We have a sample or
-	      a <span class="green">point-cloud</span> $S$ represented as a
-	      metric space$(S,d_S)$
-	    </li>
-	    <li class="fragment">$S$ is expected to be "dense" in $X$</li>
-	  </ul>
+	  <h3><u>Problem Statement</u></h3>
+	  <section>
+	    <ul class="timeline" style="font-size: 0.6em">
+	      <li class="fragment">$X$ is an <red>unknown</red> (compact) subset of $\mathbb{R}^N$.</li>
+	      <li class="fragment">We have a sample or
+		a <span class="green">point-cloud</span> $S$ represented as a
+		metric space$(S,\|\cdot\|)$.
+	      </li>
+	      <li class="fragment">$S$ is expected to be "dense" in $X$.</li>
+	    </ul>
+	  </section>
+	  <section>
+	    We ask if we can
+	    <ul class="timeline" style="font-size: 0.6em">
+	      <li class="fragment">compute the homology/homotopy groups of $X$ from $S$.</li>
+	      <li class="fragment">construct a homotopy equivalent space $\widetilde X$ from $S$.</li>
+	      <li class="fragment">embed $\widetilde X$ in $\mathbb{R}^N$ close to $X$.</li>
+	    </ul>	    
+	  </section>
 	</section>
 
 	<section id="sampling">
@@ -170,19 +169,7 @@
 	    Road <span class="green">⟶</span> GPS locations 
 	  </section>
 	</section>
-	<section data-background-iframe="https://smajhi.com/shape-reconstruction"></section>
-	
-	<section>
-	  <h3><u>Map Reconstruction</u></h3> Let $G$ be the unknown map of a city.
-	  <br>
-	  <ul class="timeline" style="font-size: 0.8em">
-	    <li class="fragment">$G$ is an embedded graph</li>
-	    <li class="fragment">$G$ has the shortest-path metric</li>
-	    <li class="fragment">$S$ is the GPS locations of cars</li>
-	    <li class="fragment">$S$ is reasonably close to $G$</li>
-	  </ul>
-	</section>
-	
+		
 	<section id="reconstruction">
 	  <h3><u>Data <span class="green">⟶</span> Shape</u></h3>
 	  <h6>Vietoris-Rips at scale $\epsilon>0$</h6>
@@ -191,13 +178,11 @@
 	  <span class="green">⟶</span>
 	  
 	  <img width="200" style="margin:50px;border:none;background:none" src="rips.png" />
-	  <definition>
+	  <definition data-header="Vietoris-Rips Complex">
 	    In a metric space $(M,d)$, each subset $A$ size $k$ with
 	    $diam_d(A)<\epsilon$ is a $(k-1)$-simplex.
 	  </definition>
 	</section>
-	
-	<section data-background-iframe="https://smajhi.com/shape-reconstruction"></section>
 	
 	<section id="manifold-recon">
 	  <h3><u>Manifold Reconstruction</u></h3>
@@ -205,7 +190,7 @@
 	    <br>
 	    small $\epsilon$ + dense sample
 	    <br>=<br>
-	    Rips complex is a good reconstruction for <span class="green">manifolds</span>
+	    Rips complex is a good reconstruction for <span class="green">manifolds</span>.
 	</section>
 	<section data-background-iframe="https://smajhi.com/shape-reconstruction"></section>
 
@@ -216,7 +201,33 @@
 	  &#128546;
 	</section>
 	<section data-background-iframe="https://smajhi.com/shape-reconstruction"></section>
+
+	<section>
+	  <h3><u>Our Approach</u></h3>
+	  <section>
+	    <ul class="timeline" style="font-size: 0.8em">
+	      <li class="fragment">$X$ is a <green>geodesic</green> space $(X,d_L)$.</li>
+	      <li class="fragment"><green>Distortion</green>
+		$\delta=\sup_{x\neq y}\frac{d_L(x,y)}{\|x-y\|}$ is finite.</li>
+	      <li class="fragment"><green>Convexity radius ($\rho$)</green> is positive.</li>
+	      
+	      <li class="fragment">$d_H(X,S)$ is small.</li>
+	    </ul>
+	  </section>
+	  
+	  <section>
+	    <block data-header="<u>Persistence-based Reconstruction</u>">
+	      If $d_H(X,S)<\epsilon<\frac{\rho}{2\delta(3\delta+1)}$, the image
+								      $$Im(j_*)\simeq\pi_*(X),$$
+								      where
+								      $j:\mathcal{R}_{\epsilon}(S)\to\mathcal{R}_{\frac{1}{2}(3\delta+1)\epsilon}(S)$.
+	    </block>
+	  </section>
+	</section>
 	
+	<section data-background-iframe="https://arxiv.org/pdf/1810.10144.pdf"></section>
+	<section data-background-iframe="https://smajhi.com/shape-reconstruction"></section>
+
 	<section>
 	  <h3><u>The Reconstruction Library</u></h3>
 	  <ul class="timeline">
@@ -227,8 +238,9 @@
 	  </ul>
 	</section>
 	
-	
 	<!-- Shape Comparison -->
+	
+	<section><h3>2. Comparison</h3></section>
 	<section>
 	  <aside class="notes">
 	    Shape Comparison is an applied field of research. It has evolved a lot in the
@@ -368,7 +380,6 @@
 	    </div>
 	  </section>
 	</section>
-	<section data-background-iframe="https://smajhi.com/shape-reconstruction"></section>
 	<!-- Shape ends -->
 	
 	<section>
@@ -510,18 +521,6 @@
 	</section>
 	
 	<section data-background-iframe="https://arxiv.org/pdf/1912.13008.pdf"></section> 
-	<section>
-	  <h3><u>This Presentation</u></h3>
-	  <ul class="timeline">
-	    <li class="fragment">The framework is
-	      called <span class="green">RevealJS</span>
-	    </li>
-	    <li class="fragment">Language: <span class="green">JavaScript</span></li>
-	    <li class="fragment">Platform: (modern) Web Browsers</li>
-	    <li class="fragment">Latex Support: <span class="green">MathJax</span></li>
-	    <li class="fragment">Features: Multiplexing, Notes, Timer, Autoslide, and more.
-	  </ul>
-	</section>
 	
 	<section id="thanks">
 	  The speaker will now accept<br>
